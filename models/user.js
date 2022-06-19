@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     return sequelize.define('user', {
         name: {
             type: DataTypes.STRING,
-            allowedNull: false
+            allowedNull: true
         },
         img: {
             type: DataTypes.BLOB,
@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         title: {
             type: DataTypes.STRING,
-            allowedNull: false
+            allowedNull: true
         },
         resume: {
             type: DataTypes.BLOB,
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         about: {
           type: DataTypes.TEXT,
-          allowedNull: false
+          allowedNull: true
         },
         githubLink: {
             type: DataTypes.STRING,
@@ -32,7 +32,8 @@ module.exports = (sequelize, DataTypes) => {
         },
         email: {
             type: DataTypes.STRING,
-            allowedNull: false
+            allowedNull: false,
+            unique: true
         }
     })
 }
