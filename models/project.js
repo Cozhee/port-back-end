@@ -11,7 +11,8 @@ module.exports = (sequelize, DataType) => {
             allowedNull: false,
         },
         img: {
-            type: DataType.BLOB
+            type: DataType.BLOB,
+            allowedNull: true
         },
         githubLink: {
             type: DataType.STRING,
