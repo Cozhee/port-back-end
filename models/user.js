@@ -7,11 +7,20 @@ module.exports = (sequelize, DataTypes) => {
             allowedNull: false
         },
         img: {
-            type: DataTypes.BLOB
+            type: DataTypes.BLOB,
+            allowedNull: true
         },
         title: {
             type: DataTypes.STRING,
             allowedNull: false
+        },
+        resume: {
+            type: DataTypes.BLOB,
+            allowedNull: true
+        },
+        about: {
+          type: DataTypes.TEXT,
+          allowedNull: false
         },
         githubLink: {
             type: DataTypes.STRING,
@@ -20,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
         linkedIn: {
             type: DataTypes.STRING,
             allowedNull: true
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowedNull: false
         }
     })
 }
