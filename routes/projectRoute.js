@@ -7,7 +7,7 @@ const { ProjectModel, UserModel } = require('../models/index')
 router.post('/project', async(req, res) => {
     const body = req.body
     try {
-        const user = await UserModel.findOne({ where: { id: 3 }})
+        const user = await UserModel.findOne({ where: { id: 1 }})
         const newProject = await ProjectModel.create(body)
         await user.addProject(newProject)
         res.status(200).send(newProject)
