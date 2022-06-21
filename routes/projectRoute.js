@@ -21,9 +21,20 @@ router.get('/project/:id', async(req, res) => {
     const id = req.params.id
     try {
         const selectedProject = await ProjectModel.findOne({ where: { id : id }})
-        res.status(200).send(selectedProject)
+        await selectedProject.destroy()
+        res.status(200).send(`${selectedProject.dataValues.title} deleted`)
     } catch(err) {
-        res.status(404).send('Could not get project')
+        res.status(404).send('Could not delete project')
+    }
+})
+
+router.delete('/project/:id', async(req, res) => {
+    const id = req.params.id
+    try {
+        const projectToDelete = await ProjectModel.findOne({ where: { id: id }})
+        console.log(projectToDelete)
+    } catch(err) {
+        console.log(err)
     }
 })
 
