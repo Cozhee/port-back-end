@@ -5,7 +5,7 @@ const { sequelize, UserModel, ProjectModel } = require('./models/index')
 
 async function startSequelize (){
     try {
-        await sequelize.sync()
+        await sequelize.sync({force: true})
 
         console.log('Connection a go!')
     } catch(err) {
