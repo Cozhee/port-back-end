@@ -34,6 +34,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowedNull: false,
             unique: true
+        },
+        skills: {
+            type: DataTypes.ARRAY(DataTypes.STRING),
+            allowedNull: true
         }
     })
 }

@@ -14,4 +14,16 @@ router.put('/user', async(req, res) => {
     }
 })
 
+router.delete('/user/:id', async(req, res) => {
+    try {
+        const id = req.params.id
+        const getUser = await UserModel.findOne({ where: { id: id }})
+        await getUser.destroy()
+        res.status(204).send('Deleted user')
+    } catch(err) {
+        res.status(404).send('Could not delete user')
+    }
+
+})
+
 module.exports = router
