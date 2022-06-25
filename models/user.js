@@ -1,10 +1,15 @@
 'use strict'
 
+const bcrypt = require('bcrypt')
+
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('user', {
         name: {
             type: DataTypes.STRING,
             allowedNull: true
+        },
+        username: {
+          type: DataTypes.STRING,
         },
         img: {
             type: DataTypes.BLOB,
@@ -38,6 +43,17 @@ module.exports = (sequelize, DataTypes) => {
         skills: {
             type: DataTypes.ARRAY(DataTypes.STRING),
             allowedNull: true
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowedNull: true
+        }
+    }, {
+        hooks: {
+            beforeCreate: async(user, options) => {
+                user.password = await bcrypt.hash(user.password, 5)
+                user.username = user.email.split('@')[0]
+            }
         }
     })
 }
