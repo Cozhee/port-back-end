@@ -8,11 +8,10 @@ const { UserModel } = require('../models/index')
 router.post('/signup', async(req, res) => {
 
     try {
-        const { body } = req
-        const user = await UserModel.create(body)
+        const user = await UserModel.create(req.body)
         res.send(user)
     }catch(err){
-        res.send('Could not create user')
+        res.status(201).send('Could not create user')
     }
 
 })

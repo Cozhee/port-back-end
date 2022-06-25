@@ -2,6 +2,20 @@ const express = require('express')
 const router = express.Router()
 const { UserModel } = require('../models/index')
 
+
+router.get('/:user', async(req, res) => {
+
+    try {
+        const info = req.params.user
+        const user = await UserModel.findOne({ where: { email: info }})
+        const projects = await user.getProjects()
+        res.status(200).send({user: user, projects: projects})
+    } catch(err) {
+        res.status(404).send('Could not find user')
+    }
+
+})
+
 router.put('/user', async(req, res) => {
     try {
         const { email } = req.body
